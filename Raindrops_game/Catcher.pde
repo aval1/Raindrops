@@ -1,6 +1,10 @@
 class Catcher{
 
-void draw() {
-  ellipse(mouseX,300,50,50);
+ Catcher() {
+ } 
+
+void display() {
+  background(0);
+  ellipse(mouseX,400,50,50);
 } 
 }
