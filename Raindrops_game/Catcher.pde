@@ -1,10 +1,26 @@
-class Catcher{
+class Catcher {
+  PVector loc;
+  int d;
 
- Catcher() {
- } 
+  Catcher() {
+    loc = new PVector(mouseX, height-d);
+    d = 70;
+  }
 
-void display() {
-  background(0);
-  ellipse(mouseX,400,50,50);
-} 
+  void display() {
+    ellipse(loc.x, loc.y, d, d); //Location of my ellipse
+  }
+
+  void update() {
+    loc.set(mouseX, height-d);
+  }
+  void catchDrop(Raindrop drop) {       //catchDrop is the funtion  where the raindrop and the cather interact and the raindop disappears
+    if (loc.dist(drop.loc) < d/2 + drop.d/2) {
+      drop.vel.set(0, 0);
+      drop.acc.set(0, 0);
+      drop.loc.set(width*10,height*10);
+      score++;
+    }
+  }
 }
+

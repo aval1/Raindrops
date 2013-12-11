@@ -1,37 +1,27 @@
 class Raindrop {
-  PVector locs;
-  PVector vels;
+  PVector loc;
+  PVector vel;
   PVector acc;
-  PVector neg;
   color c;
+  int d;
 
-  Raindrop() {
+  Raindrop() { 
     colorMode(HSB, 360, 100, 100);
-    locs = new PVector(random(2.5, 497.5), random(2.5, 497.5));
-    acc = new PVector (0, .0001);
-    neg = new PVector (-1, -1);
+    loc = new PVector(random(500),0);
+    acc = new PVector (0, .01); 
     c = color(random(360), 100, 100);
-    vels = new PVector(0, 1);
-  }
+    vel = new PVector(0, 2);
+    d= 20;
+}
 
-  void display() {
+  void display() { //creates the raindrop
     fill(c);
-    ellipse(locs.x, locs.y, 5, 5);
-    locs.add(vels);
-    vels.add(acc);
+    ellipse(loc.x, loc.y, d,d);
+  }
+  void drop() { //Makes the variable move with velocity and acceleration
+    loc.add(vel);
+    vel.add(acc);
     noStroke();
-    if (locs.y+2.5>height) {
-      vels.y*=-1;
-    }
-    if (locs.x+2.5> width) {
-      vels.x*=-1;
-    }
-    if (locs.x-2.5<0) {
-      vels.x*=-1;
-    }
-    if (locs.y-2.5<0) {
-      vels.y*=-0.5;
-    }
   }
 }
 
