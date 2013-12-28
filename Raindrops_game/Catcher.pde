@@ -18,7 +18,7 @@ class Catcher {
     if (loc.dist(drop.loc) < d/2 + drop.d/2) {
       drop.vel.set(0, 0);
       drop.acc.set(0, 0);
-      drop.loc.set(width*10,height*10);
+      drop.loc.set(width*10,-300);
       score++;
     }
   }
