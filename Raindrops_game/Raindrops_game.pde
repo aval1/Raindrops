@@ -10,8 +10,8 @@ class Raindrop {
     //This block of code sets the speed, location, and sixe of the comet
     colorMode(HSB, 360, 100, 100);
     comet = loadImage("comet.png");
-    loc = new PVector(random(500), 0);
-    acc = new PVector (0, .01); 
+    loc = new PVector(random(width), 0);
+    acc = new PVector (0, 0); 
     c = color(random(360), 100, 100);
     vel = new PVector(0, 5);
     d= 30;
@@ -19,7 +19,7 @@ class Raindrop {
 
   void display() { //creates the comet
     fill(c);
-    image(comet,loc.x, loc.y, d, d);
+    image(comet, loc.x, loc.y, d, d);
   }
   //Makes the loc varaible move with velocity and acceleration
   void drop() {
@@ -28,11 +28,10 @@ class Raindrop {
     noStroke();
     if (loc.y>height) {
       score++;
-      loc.set(width*10,0);
-      vel.set(0,0);
-      acc.set(0,0);
- 
- }
+      loc.set(width*10, 0);
+      vel.set(0, 0);
+      acc.set(0, 0);
+    }
   }
 }
 
