@@ -6,6 +6,7 @@ int oldTime = 0;
 int currentTime = 0;
 int timeChange = 0;
 int levels=0;
+int interval=2000;
 boolean run;
 boolean stop = true;
 int w;
@@ -40,7 +41,7 @@ void setup() {
   n=250;
   o=100;
   p=100;
-  lives=5;
+  lives=10;
 }
 
 void draw() {
@@ -64,7 +65,7 @@ void draw() {
   if (run == false) {
     background(galaxy);
     text("score " + score, 0+ width/34, 20); //Displays score variable
-    text("lives " + lives, 0+ width/1.1, 20);
+    text("lives " + lives, 0+ width/1.2, 20);
     text("Level " + levels, 0+width/2, height/2);
     c.display();
     for (int i=0; i<index; i++) {
@@ -77,7 +78,7 @@ void draw() {
     //this block of code helps set the time interval in which each raindrop falls
     currentTime= millis();
     timeChange = currentTime - oldTime;  
-    if (timeChange>=2000) {
+    if (timeChange>=interval) {
       index++;
       oldTime = currentTime;
     }
@@ -134,7 +135,9 @@ void mousePressed() {
   if (mouseX>m && mouseX<m+o && mouseY>n && mouseY<n+p) {
     run = true;
     stop = true;
-    lives = 5;
+    lives = 10;
+    interval=2000;
+    score=0;
   }
 }
 
