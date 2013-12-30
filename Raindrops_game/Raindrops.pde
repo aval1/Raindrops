@@ -1,10 +1,11 @@
 PImage galaxy;
-int count = 200;
+int count = 300;
 int score;
 int index = 1; 
 int oldTime = 0; 
 int currentTime = 0;
 int timeChange = 0;
+int levels=0;
 boolean run;
 boolean stop = true;
 int w;
@@ -49,6 +50,13 @@ void draw() {
     fill (140, 100, 100);
     rect(a, b, w, h);
     text("Start", 100, 100);
+    textSize(70);
+    text("SAVE THE WORLD!", 30, 260);
+    textSize(40);
+    text("GAME OBJECTIVE:",  150, 380);
+    text("Dodge the comets!",150, 420);
+    text("Protect the earth!", 150, 460);
+    text("From the meteor shower!", 150,500);
     textSize(20);
   }
 
@@ -57,6 +65,7 @@ void draw() {
     background(galaxy);
     text("score " + score, 0+ width/34, 20); //Displays score variable
     text("lives " + lives, 0+ width/1.1, 20);
+    text("Level " + levels, 0+width/2, height/2);
     c.display();
     for (int i=0; i<index; i++) {
       r[i].display();
@@ -72,39 +81,31 @@ void draw() {
       index++;
       oldTime = currentTime;
     }
-     if(score>5) {
-    
+     if(score>10) {
+    levels=1;
    if (timeChange>=1000) {
       index++;
       oldTime = currentTime;
     }
  }
-  if(score>10) {
+  if(score>30) {
+  levels=2;
     if (timeChange>=500) {
+      
       index++;
       oldTime = currentTime;
     }
  }
-  if(score>15) {
+  if(score>50) {
+   levels=3;
     if (timeChange>=250) {
       index++;
       oldTime = currentTime;
     }
- }
-  if(score>20) {
-    if (timeChange>=125) {
-      index++;
-      oldTime = currentTime;
     }
- }
-  if(score>25) {
-    if (timeChange>=50) {
-      index++;
-      oldTime = currentTime;
-    }
- }
+ 
 //sets the parameters in which the game is won   
-if (score>30) {
+if (score>100) {
   text("WINNER", 300, 300);
 }
 //sets the parameters when the game is lost
@@ -115,7 +116,7 @@ if (lives==0) {
 if (stop==false) {
   background(0);
   text("Now the earth is distroyed. Are you proud of yourself?", 100, 100);
-  text("Luckily I am feeling generous and will let you try again.", 100, 120);
+  text("Luckily I am feeling generous and will let you continue", 100, 120);
   text("Replay", 250, 240);
   rect(m, n, o, p);
 }
