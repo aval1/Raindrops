@@ -6,11 +6,12 @@ class Catcher {
   Catcher() {
     loc = new PVector(mouseX, height-d);
     earth = loadImage("earth.png");
-    d = 70;
+    d = 100;
   }
 
   //Location of the earth
   void display() {
+    imageMode(CENTER);
     image(earth,loc.x, loc.y, d, d);
   }
 
